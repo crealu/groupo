@@ -1,0 +1,27 @@
+1. Install dependencies/devDependencies
+
+	npm install express pg react react-dom --save
+	npm install @babel/core @babel/preset-env @babel/preset-react babel-loader css-loader style-loader webpack webpack-cli webpack-dev-server html-webpack-plugin nodemon
+
+2. Create PostgreSQL server and database
+	download postgres
+	add server (groupo) to specific port number (ex. 5445)
+	in terminal connect to server by running psql -p 5445
+	in ide create file create-users.sql and give it db creation cmd
+	in terminal type \i create-users.sql to create db
+
+3. Create server.js file to connect to postgres
+	
+
+
+2. Create files
+	server.js
+	.babelrc
+
+	src
+		- App.jsx
+		- index.html
+		- index.js
+		- style.css
+
+3. Populate server.js
