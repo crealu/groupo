@@ -4,7 +4,7 @@ import '../App.css';
 
 const Profile = () => {
 	const {state, dispatch} = useContext(AuthContext);
-	
+
 	const logout = () => {
 		localStorage.removeItem('token');
 		dispatch({ type: 'set user', payload: null })
@@ -21,10 +21,7 @@ const Profile = () => {
 
 		await fetch('/delete', options)
 			.then(res => res.json())
-			.then(data => { 
-				console.log(data);
-				logout();
-			})
+			.then(data => { logout() })
 			.catch(err => { console.log(err) })
 	};
 

@@ -4,9 +4,10 @@ export const AuthContext = createContext();
 
 export const initialState = {
 	user: null,
+	dashboard: 'Profile',
 	posts: [],
-	view: 'profile',
-	views: []
+	views: [],
+	media: [],
 }
 
 export function reducer(state, action) {
@@ -23,16 +24,29 @@ export function reducer(state, action) {
 				posts: action.payload
 			}
 			break;
-		case 'set view':
+		case 'set dashboard':
 			return {
 				...state,
-				view: action.payload
+				dashboard: action.payload
 			}
 			break;
 		case 'set views':
 			return {
 				...state,
 				views: action.payload
+			}
+			break;
+		case 'set user and dashboard':
+			return {
+				...state,
+				user: action.payload[0],
+				dashboard: action.payload[1]
+			}
+			break;
+		case 'set media':
+			return {
+				...state,
+				media: action.payload
 			}
 			break;
 	}

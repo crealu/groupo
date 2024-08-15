@@ -23,7 +23,7 @@ module.exports = {
 			client = await pool.connect();
 			const cmd = 'SELECT * FROM users;'
 			const result = await client.query(cmd);
-			console.log(result.rows, result.rowCount);
+			// console.log(result.rows, result.rowCount);
 
 		} catch (err) {
 			console.log('DB query error: ', err);
@@ -44,7 +44,7 @@ module.exports = {
 
 			if (theUser && bcrypt.compare(password, theUser.password)) {
 				const token = jwt.sign(
-					{ id: theUser.id, email: theUser.email }, 
+					{ user_id: theUser.user_id, email: theUser.email }, 
 					JWT_SECRET, 
 					{ expiresIn: '5m' }
 				);

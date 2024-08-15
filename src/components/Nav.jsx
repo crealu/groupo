@@ -6,18 +6,18 @@ const Nav = () => {
 	const {state, dispatch} = useContext(AuthContext);
 
 	const changeView = (event) => {
-		dispatch({ type: 'set view', payload: event.target.textContent })
+		dispatch({ type: 'set dashboard', payload: event.target.textContent })
 	}
 
 	const activeProfile = () => {
 		return {
-			textDecoration: state.view == 'Profile' ? 'overline' : 'none'
+			textDecoration: state.dashboard == 'Profile' ? 'overline' : 'none'
 		}
 	}	
 
 	const activeFeed = () => {
 		return {
-			textDecoration: state.view == 'Feed' ? 'overline' : 'none'
+			textDecoration: state.dashboard == 'Feed' ? 'overline' : 'none'
 		}
 	}
 

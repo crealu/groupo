@@ -23,9 +23,11 @@ const Page = () => {
 			await fetch('/protected', options)
 				.then(res => res.json())
 				.then(data => { 
-					console.log(data);
-					dispatch({ type: 'set user', payload: data});
-					dispatch({ type: 'set view', payload: 'Profile'});
+					if (data.error == 'Invalid token') {
+						dispatch({ type: 'set user', payload: null })
+						return;
+					}
+					dispatch({ type: 'set user and dashboard', payload: [data, 'Profile']})
 				})
 				.catch(err => { localStorage.removeItem('token') });
 		}
@@ -36,7 +38,7 @@ const Page = () => {
 	return (
 		<div className="page">
 			<h1 className="page-title">Groupomania</h1>
-			{ state.user ? <Dashboard /> : <Form /> }
+			{ state.user != undefined ? <Dashboard /> : <Form /> }
 		</div>
 	)
 }

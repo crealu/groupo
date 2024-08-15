@@ -11,7 +11,7 @@ const Dashboard = ({ user }) => {
 	return (
 		<div className="dashboard">
 			<Nav />
-			{state.view == 'Profile' ? <Profile /> : <Feed />}
+			{state.dashboard == 'Profile' ? <Profile /> : <Feed />}
 		</div>
 	)
 }

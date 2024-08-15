@@ -2,10 +2,13 @@ const express = require('express');
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
 const viewRoutes = require('./routes/view');
+// const path = require('path');
 
 const app = express();
 const port = 8760;
 
+// app.use(express.static(__dirname));
+app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 

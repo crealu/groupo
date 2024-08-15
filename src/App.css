@@ -80,12 +80,16 @@
 	margin-bottom: 20px;
 }
 
-.post-form {
-	display: flex;
-	flex-direction: column;
+.post-btn {
+	margin-right: 10px;
 }
 
-.post-form div {
+/*.post-form {
+	display: flex;
+	flex-direction: column;
+}*/
+
+.post-form textarea {
 	width: 100%;
 }
 
@@ -97,4 +101,32 @@
 	background: darkred !important;
 	margin-left: 20px;
 	color: white !important;
+}
+
+.upload-group {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.text-input {
+	margin-bottom: 20px;
+}
+
+.file-input {
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+.media-post-img {
+	width: 200px;
+}
+
+.feed-tabs {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.content-btn {
+	border: none;
+	background: none;
 }

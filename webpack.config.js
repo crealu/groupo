@@ -2,6 +2,11 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  // entry: './src/index.js',
+  // ouput: {
+  //   path: path.resolve(__dirname, '/dist'),
+  //   filename: 'main.js'
+  // },
 	mode: 'development',
   
 	resolve: {
@@ -32,6 +37,14 @@ module.exports = {
           }
         ]
       }
+      // {
+      //   test: /\.(png|jpe?g)/,
+      //   use: [
+      //     {
+      //       loader: 'file-loader'
+      //     }
+      //   ]
+      // }
     ]
 	},
 

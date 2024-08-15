@@ -16,20 +16,14 @@ const Posts = () => {
 
 		await fetch('/getPosts', options)
 			.then(res => res.json())
-			.then(data => {
-					console.log(data);
-					dispatch({ type: 'set posts', payload: data })
-			})
+			.then(data => { dispatch({ type: 'set posts', payload: data }) })
 			.catch(err => { console.log(err) })
 	};
 
 	const getViews = async () => {
 		await fetch('/getViews')
 			.then(res => res.json())
-			.then(data => {
-					console.log(data);
-					dispatch({ type: 'set views', payload: data })
-			})
+			.then(data => { dispatch({ type: 'set views', payload: data }) })
 			.catch(err => { console.log(err) })
 	}
 
@@ -45,10 +39,7 @@ const Posts = () => {
 
 		await fetch('/addView', options)
 			.then(res => res.json())
-			.then(data => { 
-				console.log(data);
-				getViews();
-			 })
+			.then(data => { getViews() })
 			.catch(err => { console.log(err) })
 	}
 

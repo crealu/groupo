@@ -9,10 +9,7 @@ module.exports = {
 			client = await pool.connect();
 			const cmd = 'SELECT * FROM views;'
 			const result = await client.query(cmd);
-			console.log(result.rows, result.rowCount);
 			let views = result.rows;
-			console.log(views);
-
 			res.send(views);
 
 		} catch (err) {

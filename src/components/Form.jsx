@@ -31,16 +31,14 @@ const Form = () => {
 			.then(res => res.json())
 			.then(data => {
 				if (endpoint == '/login') {
-					console.log(data);
 					const { token, user } = data;
+					console.log(user);
 					localStorage.setItem('token', token);
-					dispatch({ type: 'set user', payload: user })
-					dispatch({ type: 'set view', payload: 'Profile' })
+					dispatch({ type: 'set user and dashboard', payload: [user, 'Profile']})
 				} else {
 					if (data.msg == 'fail') {
 						setError('Error: account could not be created');
 					}
-					// updateForm();
 				}
 			})
 			.catch(err => { console.log(err) })
