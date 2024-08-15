@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { AuthContext } from '../context';
 
 const Media = () => {
 	const {state, dispatch} = useContext(AuthContext);
 
 	const getMedia = async () => {
-		console.log('getting media');
-
 		const obj = {};
 
 		const options = {
@@ -15,10 +13,12 @@ const Media = () => {
 			body: JSON.stringify(obj)
 		}
 
-		await fetch('/getMedia', options)
-			.then(res => res.json())
-			.then(data => { console.log(data); dispatch({ type: 'set media', payload: data }) })
-			.catch(err => { console.log(err) })
+		if (state.media.length == 0) {
+			await fetch('/getMedia', options)
+				.then(res => res.json())
+				.then(data => { dispatch({ type: 'set media', payload: data }) })
+				.catch(err => { console.log(err) })
+		}
 	}
 
 	useEffect(() => { getMedia() }, [])
