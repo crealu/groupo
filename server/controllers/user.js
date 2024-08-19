@@ -41,7 +41,7 @@ module.exports = {
 			const result = await pool.query(cmd, [email]);
 			const theUser = result.rows[0];
 
-			if (theUser && bcrypt.compare(password, theUser.password)) {
+			if (theUser && await bcrypt.compare(password, theUser.password)) {
 				const token = jwt.sign(
 					{ user_id: theUser.user_id, email: theUser.email }, 
 					JWT_SECRET, 
@@ -67,11 +67,16 @@ module.exports = {
 
 		try {
 			client = await pool.connect();
-			const cmd = `INSERT INTO users(email, password, created_at) VALUES ($1, $2, $3);`
-			const args = [req.body.email, encrypted, now];
-			const result = await client.query(cmd, args);	
-			res.send({ msg: 'success' });
-
+			const cmd1 = 'SELECT * FROM users WHERE email = $1';
+			const result1 = await pool.query(cmd1, [req.body.email]);
+			if (result1.rows[0]) {
+				res.send({ error: 'That user already exists' });
+			} else {
+				const cmd2 = `INSERT INTO users(email, password, created_at) VALUES ($1, $2, $3);`
+				const args2 = [req.body.email, encrypted, now];
+				const result2 = await client.query(cmd1, args1);	
+				res.send({ msg: 'success' });
+			}
 		} catch (err) {
 			res.send({ msg: 'fail' });
 			console.log('DB query error: ', err);
