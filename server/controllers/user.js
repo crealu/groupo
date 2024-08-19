@@ -23,7 +23,6 @@ module.exports = {
 			client = await pool.connect();
 			const cmd = 'SELECT * FROM users;'
 			const result = await client.query(cmd);
-			// console.log(result.rows, result.rowCount);
 
 		} catch (err) {
 			console.log('DB query error: ', err);
@@ -52,6 +51,7 @@ module.exports = {
 			} else {
 				res.send({ error: 'Invalid credentials' });
 			}
+
 		} catch (err) {
 			res.send({ error: 'Internal server error' })
 			console.log('DB query error: ', err);
@@ -71,6 +71,7 @@ module.exports = {
 			const args = [req.body.email, encrypted, now];
 			const result = await client.query(cmd, args);	
 			res.send({ msg: 'success' });
+
 		} catch (err) {
 			res.send({ msg: 'fail' });
 			console.log('DB query error: ', err);
@@ -81,7 +82,6 @@ module.exports = {
 
 	verify: async (req, res) => {
 		const authHeader = req.headers.authorization;
-		console.log(authHeader);
 
 		if (authHeader) {
 			const token = authHeader.split(' ')[1];
@@ -105,7 +105,6 @@ module.exports = {
 			const cmd = 'DELETE FROM users WHERE email = $1;'
 			const args = [req.body.email]
 			const result = await client.query(cmd, args);
-			console.log(result.rows, result.rowCount);
 
 		} catch (err) {
 			console.log('DB query error: ', err);
