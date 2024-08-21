@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { AuthContext } from '../context';
 import '../App.css';
 import Form from './Form';
@@ -38,7 +39,7 @@ const Page = () => {
 	return (
 		<div className="page">
 			<h1 className="page-title">Groupomania</h1>
-			{ state.user != undefined ? <Dashboard /> : <Form /> }
+				{ state.user != undefined ? <Dashboard />: <Form />}
 		</div>
 	)
 }
