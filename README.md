@@ -18,7 +18,7 @@ In two separate terminal tabs
 
 Navigate to localhost:5670 in browser and view login page
 
-![login page](./public/img/group login.png)
+![alt text](./public/img/group login.png)
 
 
 
